@@ -1,15 +1,15 @@
 # Energy-Based Cross Attention for Bayesian Context Update in Text-to-Image Diffusion Models
 
 ## Abstract
-Despite the remarkable performance of text-to-image diffusion models in image generation tasks, recent studies have raised the issue that generated images sometimes cannot capture the intended semantic contents of the text prompts, which phenomenon is often called semantic misalignment. 
-To address this, here we present a novel energy-based model (EBM) framework. 
-Specifically, we first formulate EBMs of latent image representations and text embeddings in each cross-attention layer of the denoising autoencoder. 
-Then, we obtain the gradient of the log posterior of context vectors, which can be updated and transferred to the subsequent cross-attention layer, thereby implicitly minimizing a nested hierarchy of energy functions. 
+> Despite the remarkable performance of text-to-image diffusion models in image generation tasks, recent studies have raised the issue that generated images sometimes cannot capture the intended semantic contents of the text prompts, which phenomenon is often called semantic misalignment.
+To address this, here we present a novel energy-based model (EBM) framework.
+Specifically, we first formulate EBMs of latent image representations and text embeddings in each cross-attention layer of the denoising autoencoder.
+Then, we obtain the gradient of the log posterior of context vectors, which can be updated and transferred to the subsequent cross-attention layer, thereby implicitly minimizing a nested hierarchy of energy functions.
 Our latent EBMs further allow zero-shot compositional generation as a linear combination of cross-attention outputs from different contexts. Using extensive experiments, we demonstrate that the proposed method is highly effective in handling various image generation tasks, including multi-concept generation, text-guided image inpainting, and real and synthetic image editing.
 
 ![main](assets/figures/main.jpg)
 
-## Upcoming 
+## Upcoming
 
 Latest update: 20 June, 2023
 
@@ -53,14 +53,14 @@ This repo follows the style of [diffusers](https://github.com/huggingface/diffus
 - `utils`:
   - `attention_hook.py`: contains hook functions for monitoring the progress of energy values.
   - `gamma_scheduler.py`: contains generalized schedulers for hyperparameters in BCU, CACAO, etc.
- 
-We provide four exemplary main scripts, i.e `realedit_txt2img.py`. These scripts may share some common options as follow: 
+
+We provide four exemplary main scripts, i.e `realedit_txt2img.py`. These scripts may share some common options as follow:
 - `--gamma_attn, --gamma_norm`: $\gamma_{attn}, \gamma_{norm}$ in BCU.
 - `--gamma_tau`: $\tau$ in learning rate scheduling (either for both main and editorial contexts. Please see appendix C for more details).
 - `--alpha`: $\alpha_{s}$ in CACAO. `--alpha_tau` is similar to `gamma_tau`. Usually both $\tau$ are set in same value.
 - `--debug`: The results and configurations are saved in [weight & biases](https://wandb.ai/site) if you are not debugging. Set this option if you don't want w&b logging.
 
-More details per each task are provided in below. 
+More details per each task are provided in below.
 
 
 ### 1. Real-image editing
@@ -83,9 +83,9 @@ python realedit_txt2img.py --img_file assets/samples/realedit/afhq_1.jpg --editi
 ```
 
 - BCU is not applied to the main prompt for the sake of img-to-img translation (more discussions in appendix C).
-- `--editing_direction` implies whether the `--editing_prompt`, e.g. _dog, cat_, corresponds to conjunction (1) or negation (0) composition. 
+- `--editing_direction` implies whether the `--editing_prompt`, e.g. _dog, cat_, corresponds to conjunction (1) or negation (0) composition.
 - Recommend to set `--gamma_{attn, norm}_compose` in a scale of $1e-4$.
-- While the hyper-parameters, e.g. $\gamma, \alpha$, are set in common for every images, each hyper-parameter can be individually fine-tuned for a better performance. For example, smaller `--alpha_tau` leads to more drastic changes as CACAO starts to be applied from early time steps.  
+- While the hyper-parameters, e.g. $\gamma, \alpha$, are set in common for every images, each hyper-parameter can be individually fine-tuned for a better performance. For example, smaller `--alpha_tau` leads to more drastic changes as CACAO starts to be applied from early time steps.
 
 ![main](assets/figures/cat2dog_append.jpg)
 ![main](assets/figures/horse2zebra_append.jpg)
