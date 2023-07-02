@@ -10,8 +10,8 @@ class EnergyCrossAttnProcessor:
         self,
         attn: Attention,
         hidden_states,
-        gamma_attn: float,
-        gamma_norm: float,
+        gamma_attn: float=0.,
+        gamma_norm: float=0.,
         encoder_hidden_states=None,
         attention_mask=None,
         # For text-guided inpainting
