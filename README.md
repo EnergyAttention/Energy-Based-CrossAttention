@@ -123,10 +123,7 @@ python inference_txt2img.py --prompt "A cat wearing a shirt" --gamma_attn 0.01 -
 ```
 python inpaint_txt2img.py --gamma_attn 0.025 --gamma_norm 0.025 --prompt "teddy bear" --img_file assets/samples/inpaint/starry_night_512.png --mask_file assets/samples/inpaint/starry_night_512_mask.png
 ```
-
-### 5. Citation
-
-```
 - We recommend to use $\gamma_{attn}, \gamma_{attn} \in \{0.01, 0.025\}$.
 - [Stable Inpaint](https://huggingface.co/runwayml/stable-diffusion-inpainting) is a default backbone model. It can be switched to a [Stable Repaint](https://github.com/huggingface/diffusers/blob/main/examples/community/stable_diffusion_repaint.py) with `--repaint` option.
 
+### 5. Citation
