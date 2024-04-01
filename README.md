@@ -1,4 +1,16 @@
-# Energy-Based Cross Attention for Bayesian Context Update in Text-to-Image Diffusion Models
+# Energy-Based Cross-Attention 
+
+[**NeurIPS 2023**] This repository is the official implementation of [Energy-Based Cross Attention for Bayesian Context Update in Text-to-Image Diffusion Models
+](https://arxiv.org/abs/2306.09869).<br>
+[Geon Yeong Park*](https://geonyeong-park.github.io/),
+[Jeongsol Kim*](https://jeongsol.dev/),
+[Beomsu Kim](https://scholar.google.co.kr/citations?user=TofIFUgAAAAJ&hl=en),
+[Sang Wan Lee](https://aibrain.kaist.ac.kr),
+[Jong Chul Ye](https://bispl.weebly.com/)
+
+[![arXiv](https://img.shields.io/badge/arxiv-2306.09869-b31b1b
+)](https://arxiv.org/abs/2306.09869)
+
 
 ## Abstract
 > Despite the remarkable performance of text-to-image diffusion models in image generation tasks, recent studies have raised the issue that generated images sometimes cannot capture the intended semantic contents of the text prompts, which phenomenon is often called semantic misalignment.
@@ -9,13 +21,8 @@ Our latent EBMs further allow zero-shot compositional generation as a linear com
 
 ![main](assets/figures/main.jpg)
 
-## Upcoming
 
-Latest update: 20 June, 2023
-
-- [x] Code release
-- [ ] Colab demo
-- [ ] Project page
+- Latest update: 1 April, 2024
 
 
 ## Prerequisites
@@ -127,3 +134,13 @@ python inpaint_txt2img.py --gamma_attn 0.025 --gamma_norm 0.025 --prompt "teddy 
 - [Stable Inpaint](https://huggingface.co/runwayml/stable-diffusion-inpainting) is a default backbone model. It can be switched to a [Stable Repaint](https://github.com/huggingface/diffusers/blob/main/examples/community/stable_diffusion_repaint.py) with `--repaint` option.
 
 ### 5. Citation
+If you find our work interesting, please cite our paper.
+```bibtex
+@article{park2024energy,
+  title={Energy-based cross attention for bayesian context update in text-to-image diffusion models},
+  author={Park, Geon Yeong and Kim, Jeongsol and Kim, Beomsu and Lee, Sang Wan and Ye, Jong Chul},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+```
